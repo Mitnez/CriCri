@@ -10,7 +10,6 @@ except:
 public = ip.ippublica()
 
 def main():
-    utilidades.detector_de_sistema()
     utilidades.limpiar_consola()
     utilidades.logo()
     
