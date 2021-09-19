@@ -22,10 +22,14 @@ def limpiar_consola():
     
 def detector_de_sistema():
         if "linux" in sys.platform:
-            print("Corriendo CryCry en Linux")
+            print(3, "Corriendo CryCry en Linux")
+            pass
         elif "darwin" in sys.platform:
-            print("Corriendo CryCry en macOS")
+            print(3, "Corriendo CryCry en macOS")
+            pass
         elif "win" in sys.platform:
             print("Corriendo CryCry en Windows")
+            sys.exit(1)
         else:
             print("No se cual sea el sistema {}, si funciona que cool la verdad".format(sys.platform))
+        return 

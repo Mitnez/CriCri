@@ -1,5 +1,12 @@
-import requests
 import modulos.pipinstaller as ip
+try:
+    import requests
+except:
+    yn = input("Falta el modulo requests, ¿deseas instalarlo? [y/n]")
+    if yn == 'y':
+        ip.instalador.instaladorpip(paquete="requests")
+    else:
+        print("Instalalo tu, puto")
 try:
     from bs4 import BeautifulSoup
 except:
