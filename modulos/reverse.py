@@ -16,8 +16,7 @@ except:
     else:
         print("Instalalo tu, puto")
 
-class sitiosscan():
-    def escaneo(*args):
+def escaneo(*args):
         web = args
         agent = {'User-Agent':'Firefox'}
         try:

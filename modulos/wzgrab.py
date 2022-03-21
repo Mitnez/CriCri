@@ -1,22 +1,36 @@
+from alive_progress import alive_bar
 try:
     from os import pardir
+    import sys
     import pyshark
-    import modulos.parseadorips as paip
+    from alive_progress import config_handler
+    from modulos import parseadorips as paip, loading
     import subprocess
 except:
     print("Alguno modulo no esta descargado o en la raíz de CryCry")
 
-def parses():
+def inicio():
     print("")
     print("========INTERFACES DE RED========")
-    subprocess.call(
-    [r'modulos\\tshark.bat'])
+    try:
+        if 'win' in sys.platform:
+            subprocess.call([r'modulos\\tshark.bat'])
+        elif 'linux' in sys.platform:
+            subprocess.run(['tshark', '-D'])
+    except:
+      #  if 'linux' in sys.platform:
+       #     print("Tienes linux, genial :D")
+        #    subprocess.run(['tshark -D'])
+       # else:
+        #    print("Hubo un problema al correr el modulo en Windows")
+       print("Hubo un problema al llamar a TShark, verifica la ruta")
     print("=================================")
     moduloinalambrico = input("Ingresa la ruta de la interfaz de red (SIN EL NOMBRE, SOLO LA RUTA HASTA EL }) \n ==> ")
     print("===========================================")
     print("Recolectando datos :D")
-    cap = pyshark.LiveCapture(output_file='Data\\logs.pcap', interface=moduloinalambrico)
-    cap.sniff(timeout=20)
+    with alive_bar(total = None, bar='blocks'):
+        cap = pyshark.LiveCapture(output_file='logs', interface=moduloinalambrico)
+        cap.sniff(timeout=20)
     print("===========================================")
     print("IPs encontradas :D")
     paip.parseador()

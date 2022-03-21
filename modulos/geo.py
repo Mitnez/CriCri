@@ -1,9 +1,7 @@
 import urllib.request
 import json
-
-class geo():
-    def geolocalizacion(sacada):
-        ip = sacada
+def geolocalizacion():
+        ip = input("Introduce una direccion IP ==> ")
         url = "https://ipinfo.io/" + ip + "/json"
         abrirURL = urllib.request.urlopen(url)
         cargarURL = json.load(abrirURL)
@@ -11,12 +9,12 @@ class geo():
         for i in cargarURL:
             print( i + ": " + cargarURL[i])
             
-    def geolo(sacada):
+def geolo(sacada):
         ip = sacada
         url = "https://ipinfo.io/" + ip + "/json"
         abrirURL = urllib.request.urlopen(url)
         cargarURL = json.load(abrirURL)
-        info = cargarURL["org"]
+        info = cargarURL["org"] + " "+ cargarURL["country"] + " "+ cargarURL["region"]
         return info
 
 if __name__ == "__main__":
