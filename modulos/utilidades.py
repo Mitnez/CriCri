@@ -2,8 +2,8 @@ import os
 import sys
 from pyfiglet import figlet_format
 
-def logo():
-        print(figlet_format('CryCry!', font='smisome1'))    
+def logo(titulo, fuente):
+        print(figlet_format(titulo, font=fuente))
 
 def limpiar_consola():
         comando = 'clear'
